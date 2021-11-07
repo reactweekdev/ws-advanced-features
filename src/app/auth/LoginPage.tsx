@@ -7,7 +7,12 @@ import Container from '@material-ui/core/Container'
 import { Box } from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
 
+import * as authActions from './authActions'
+
 import LoginForm from './LoginForm'
+import { LoginFormData } from 'lib/types'
+import { useAuthDispatch } from './auth-context'
+import { authService } from 'lib/services/authService'
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -18,6 +23,21 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
     const classes = useStyles()
+    const authDispatch = useAuthDispatch()
+
+    const handleLoginSubmit = async (data: LoginFormData) => {
+        try {
+            authDispatch(authActions.setLoading())
+            await authService.login()
+            authDispatch(authActions.setAuthenticated())
+        } catch (error) {
+            console.error(error)
+            authDispatch(authActions.setLoading(false))
+        }
+        // finally {
+        //     authDispatch(authActions.setLoading(false))
+        // }
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -28,7 +48,7 @@ const LoginPage = () => {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <LoginForm />
+                <LoginForm onFormSubmit={handleLoginSubmit} />
             </Box>
         </Container>
     )

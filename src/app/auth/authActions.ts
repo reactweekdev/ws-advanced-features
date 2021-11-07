@@ -17,13 +17,13 @@ enum AuthActionType {
     setLoading = '@auth/set-loading',
 }
 
-export const setAuthenticated = (authenticated: boolean) =>
+export const setAuthenticated = (authenticated: boolean = true) =>
     ({
         type: AuthActionType.setAuthenticated,
         authenticated,
     } as const)
 
-export const setLoading = (loading: boolean) =>
+export const setLoading = (loading: boolean = true) =>
     ({
         type: AuthActionType.setLoading,
         loading,

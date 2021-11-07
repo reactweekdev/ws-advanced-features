@@ -1,20 +1,20 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { FC } from 'react'
 
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { InputField } from 'components/InputField'
+import { LoginFormData } from 'lib/types'
 
-interface Props {}
+interface Props {
+    onFormSubmit: (data: LoginFormData) => void
+}
 
-const LoginForm = (props: Props) => {
-    const history = useHistory()
-
+const LoginForm: FC<Props> = ({ onFormSubmit }) => {
     const handleFormSubmit = (event: any) => {
         event.preventDefault()
-        setTimeout(() => {
-            history.push('/dashboard')
-        }, 2000)
+        //TODO: You can have here more form data validation
+        const { value } = event.target
+        onFormSubmit(value)
     }
 
     return (
