@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
+import { InputField } from 'components/InputField'
 
 interface Props {}
 
@@ -18,17 +19,8 @@ const LoginForm = (props: Props) => {
 
     return (
         <form noValidate onSubmit={handleFormSubmit}>
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-            />
+            <InputField name="email" label="Email Address" autoComplete="email" />
+
             <TextField
                 variant="outlined"
                 margin="normal"
