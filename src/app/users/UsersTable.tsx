@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -16,7 +16,7 @@ interface Props {
     users: User[]
 }
 
-export const UsersTable: React.FC<Props> = ({ users = [] }) => {
+const UsersTable: React.FC<Props> = ({ users = [] }) => {
     const classes = useStyles()
 
     return (
@@ -46,3 +46,5 @@ const useStyles = makeStyles({
         minWidth: 650,
     },
 })
+
+export default memo(UsersTable)

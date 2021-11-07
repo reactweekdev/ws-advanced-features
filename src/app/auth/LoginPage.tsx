@@ -13,6 +13,7 @@ import LoginForm from './LoginForm'
 import { LoginFormData } from 'lib/types'
 import { useAuthDispatch } from './auth-context'
 import { authService } from 'lib/services/authService'
+import { NotificationType, useNotification } from 'app/common/notification-context'
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const LoginPage = () => {
+    const { showToast } = useNotification()
     const classes = useStyles()
     const authDispatch = useAuthDispatch()
 
@@ -30,9 +32,9 @@ const LoginPage = () => {
             authDispatch(authActions.setLoading())
             await authService.login()
             authDispatch(authActions.setAuthenticated())
-        } catch (error) {
+        } catch (error: any) {
+            showToast(error.message, NotificationType.ERROR)
             console.error(error)
-            authDispatch(authActions.setLoading(false))
         }
         // finally {
         //     authDispatch(authActions.setLoading(false))

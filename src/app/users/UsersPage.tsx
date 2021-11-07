@@ -4,9 +4,9 @@ import { Title } from 'components/UI'
 import { userService } from 'lib/services/userService'
 import { useState } from 'react'
 import { useMount } from 'react-use'
-import { UsersTable } from './UsersTable'
+import UsersTable from './UsersTable'
 
-export const UsersPage = () => {
+const UsersPage = () => {
     const [users, setUsers] = useState([])
 
     useMount(async () => {
@@ -27,3 +27,5 @@ export const UsersPage = () => {
         </PageLayout>
     )
 }
+
+export default UsersPage

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import User from 'lib/models/User'
 
 import TableCell from '@material-ui/core/TableCell'
@@ -20,4 +20,4 @@ const UserTableRow: FC<Props> = ({ user }) => (
     </TableRow>
 )
 
-export default UserTableRow
+export default memo(UserTableRow)

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Backdrop from '@material-ui/core/Backdrop'
@@ -27,4 +27,4 @@ const BackdropLoader: FC<Props> = ({ isLoading }) => {
     )
 }
 
-export default BackdropLoader
+export default memo(BackdropLoader)

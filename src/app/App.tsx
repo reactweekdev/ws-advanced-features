@@ -3,6 +3,7 @@ import './App.css'
 import { useAuthState } from './auth/auth-context'
 import { AuthProvider } from './auth/AuthProvider'
 import LoginPage from './auth/LoginPage'
+import NotificationProvider from './common/NotificationProvider'
 import Main from './main/Main'
 
 const AppMain = () => {
@@ -16,9 +17,11 @@ const AppMain = () => {
 }
 
 const App = () => (
-    <AuthProvider>
-        <AppMain />
-    </AuthProvider>
+    <NotificationProvider>
+        <AuthProvider>
+            <AppMain />
+        </AuthProvider>
+    </NotificationProvider>
 )
 
 export default App
