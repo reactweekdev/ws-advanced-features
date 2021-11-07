@@ -1,4 +1,4 @@
-import { memo, FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 import { Box } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
