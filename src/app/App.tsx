@@ -16,6 +16,8 @@ const AppMain = () => {
     )
 }
 
+// const withContext = [NotificationProvider, AuthProvider].reduce()
+
 const App = () => (
     <NotificationProvider>
         <AuthProvider>

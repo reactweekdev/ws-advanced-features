@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Backdrop from '@material-ui/core/Backdrop'
@@ -20,8 +20,13 @@ interface Props {
 const BackdropLoader: FC<Props> = ({ isLoading }) => {
     const classes = useStyles()
 
+    const customStyle = useMemo(
+        () => (isLoading ? undefined : { color: 'red' }),
+        [isLoading]
+    )
+
     return (
-        <Backdrop className={classes.backdrop} open={isLoading}>
+        <Backdrop className={classes.backdrop} open={isLoading} style={customStyle}>
             <CircularProgress color="inherit" />
         </Backdrop>
     )

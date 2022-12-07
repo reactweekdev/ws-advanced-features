@@ -11,7 +11,7 @@ interface Props {
     message: string
 }
 
-const Toast: React.FC<Props & SnackbarProps> = ({
+const CoreToast: React.FC<Props & SnackbarProps> = ({
     open,
     autoHideDuration = 3000,
     onClose,
@@ -32,5 +32,11 @@ const Toast: React.FC<Props & SnackbarProps> = ({
         </Snackbar>
     )
 }
+
+const Toast = memo(CoreToast, (prevProps, nextProps) => {
+    return true
+})
+
+export { Toast }
 
 export default memo(Toast)
