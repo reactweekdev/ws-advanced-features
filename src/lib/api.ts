@@ -19,7 +19,7 @@ class ApiService {
         })
     }
 
-    async get(path: string, config?: {}) {
+    async get<T>(path: string, config?: {}): Promise<T> {
         const options = {
             headers: authHeader(),
             ...config,

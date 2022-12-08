@@ -1,13 +1,14 @@
 import EmptyView from 'components/EmptyView'
 import PageLayout from 'components/PageLayout'
-import { Title } from 'components/UI'
+import { Title, TypoTitle } from 'components/UI'
+import User from 'lib/models/User'
 import { userService } from 'lib/services/userService'
 import { useState } from 'react'
 import { useMount } from 'react-use'
 import UsersTable from './UsersTable'
 
 const UsersPage = () => {
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState<User[]>([])
 
     useMount(async () => {
         try {
@@ -18,7 +19,7 @@ const UsersPage = () => {
     })
 
     return (
-        <PageLayout titleComponent={<Title>Users</Title>}>
+        <PageLayout titleComponent={<TypoTitle variant="h3">Users</TypoTitle>}>
             {!!users.length ? (
                 <UsersTable users={users} />
             ) : (

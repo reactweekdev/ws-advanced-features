@@ -7,7 +7,7 @@ class UserService {
     }
 
     async fetchUsers() {
-        const usersData = await API.get(this.url.users)
+        const usersData = await API.get<User[]>(this.url.users)
         console.log(`users`, usersData)
 
         const users = usersData.map((user: any) => new User(user))

@@ -39,5 +39,11 @@ export const NotificationContext = React.createContext<NotificationContextType>(
 })
 
 export const useNotification = (): NotificationContextType => {
-    return useContext(NotificationContext)
+    const ctx = useContext(NotificationContext)
+
+    if (!ctx) {
+        throw new Error('Error ')
+    }
+
+    return ctx
 }
